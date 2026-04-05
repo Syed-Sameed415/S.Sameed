@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Syed Sameed</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* PAGE HEADER */
+    .page-header {
+      padding: 9rem 6rem 5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .page-header::after {
+      content: 'Projects';
+      position: absolute; right: -2rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif); font-size: 20vw; font-weight: 900;
+      color: var(--surface); letter-spacing: -0.05em;
+      pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900; line-height: 1.05;
+      position: relative; z-index: 1;
+    }
+    .page-header h1 em { font-style: italic; color: var(--accent); }
+    .page-header p {
+      max-width: 600px; color: var(--muted);
+      font-size: 1rem; line-height: 1.85;
+      margin-top: 1.25rem; position: relative; z-index: 1;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6rem;
+      display: flex; gap: 0; overflow-x: auto;
+    }
+    .filter-btn {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); background: none; border: none;
+      padding: 1rem 1.5rem;
+      border-right: 1px solid var(--border);
+      cursor: pointer; white-space: nowrap; transition: all 0.2s;
+    }
+    .filter-btn:hover { color: var(--accent); background: var(--card); }
+    .filter-btn.active { color: var(--accent); background: var(--card); }
+
+    /* PROJECT GRID */
+    .projects-section { padding: 5rem 6rem; }
+    .projects-main { display: flex; flex-direction: column; gap: 4rem; }
+
+    /* PROJECT CARD — DETAILED */
+    .project-card-full {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.25s;
+      overflow: hidden;
+    }
+    .project-card-full:hover { border-color: rgba(200,169,110,0.5); }
+    .project-visual {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 300px; padding: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .project-num-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 8rem; font-weight: 900;
+      color: var(--card); line-height: 1; pointer-events: none;
+    }
+    .proj-icon { position: relative; z-index: 1; }
+    .domain-tags {
+      position: absolute; bottom: 1.25rem; left: 1.25rem;
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .domain-tag {
+      font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .project-content { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .proj-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .proj-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+    .proj-course { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+    .proj-type {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem; border: 1px solid var(--border); color: var(--muted);
+      white-space: nowrap; align-self: flex-start; flex-shrink: 0;
+    }
+    .proj-body { font-size: 0.93rem; color: var(--muted); line-height: 1.9; }
+    .proj-body strong { color: var(--text); font-weight: 500; }
+    .proj-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .proj-bullets li {
+      font-size: 0.88rem; color: var(--muted); line-height: 1.65;
+      padding-left: 1.25rem; position: relative;
+    }
+    .proj-bullets li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.75rem;
+    }
+    .proj-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .tech-chip {
+      font-family: var(--mono); font-size: 0.65rem;
+      padding: 0.2rem 0.55rem;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .proj-divider {
+      height: 1px; background: var(--border); margin: 0.25rem 0;
+    }
+    .proj-outcomes {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .outcome-cell {
+      background: var(--surface); padding: 1rem;
+      display: flex; flex-direction: column; gap: 0.25rem;
+    }
+    .outcome-val { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+    .outcome-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* THV SECTION HEADER */
+    .section-divider {
+      display: flex; align-items: center; gap: 1.5rem; margin: 1rem 0 2rem;
+    }
+    .section-divider h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; white-space: nowrap; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    @media (max-width: 900px) {
+      .page-header { padding: 7rem 2rem 3rem; }
+      .filter-bar { padding: 0 1.5rem; }
+      .projects-section { padding: 3.5rem 2rem; }
+      .project-card-full { grid-template-columns: 1fr; }
+      .project-visual { min-height: 180px; border-right: none; border-bottom: 1px solid var(--border); }
+      .proj-outcomes { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Syed Sameed</a>
+  <ul class="nav-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="capstone.html">Capstone</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="section-tag">Portfolio</div>
+  <h1>Technical<br/><em>Projects</em></h1>
+  <p>
+    A collection of engineering projects spanning hardware design, soft robotics, 
+    MEMS fabrication, biomedical systems, and PLC automation. Each project reflects 
+    a different facet of my engineering background.
+  </p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active">All</button>
+  <button class="filter-btn">Hardware</button>
+  <button class="filter-btn">Robotics</button>
+  <button class="filter-btn">MEMS</button>
+  <button class="filter-btn">Biomedical</button>
+  <button class="filter-btn">Research</button>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects-section">
+  <div class="projects-main">
+
+    <!-- ===== PROJECT 1: THERMOSTAT PCB ===== -->
+    <div class="project-card-full">
+      <div class="project-visual">
+        <div class="project-num-bg">01</div>
+        <div class="proj-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="60" height="60" rx="3" stroke="#c8a96e" stroke-width="1.5"/>
+            <rect x="20" y="20" width="40" height="12" rx="1" stroke="#7eb8c9" stroke-width="1"/>
+            <rect x="20" y="38" width="18" height="12" rx="1" stroke="#c8a96e" stroke-width="1"/>
+            <rect x="42" y="38" width="18" height="12" rx="1" stroke="#c8a96e" stroke-width="1"/>
+            <line x1="20" y1="58" x2="60" y2="58" stroke="#444" stroke-width="1"/>
+            <line x1="15" y1="25" x2="10" y2="25" stroke="#c8a96e" stroke-width="1"/>
+            <line x1="15" y1="35" x2="10" y2="35" stroke="#c8a96e" stroke-width="1"/>
+            <line x1="65" y1="25" x2="70" y2="25" stroke="#7eb8c9" stroke-width="1"/>
+            <line x1="65" y1="35" x2="70" y2="35" stroke="#7eb8c9" stroke-width="1"/>
+            <circle cx="53" cy="26" r="3" stroke="#c8a96e" stroke-width="1" fill="none"/>
+            <circle cx="44" cy="26" r="3" stroke="#c8a96e" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="domain-tags">
+          <span class="domain-tag">PCB Design</span>
+          <span class="domain-tag">Hardware</span>
+          <span class="domain-tag">KiCad</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <div>
+          <div class="proj-course">ENGR Hardware Lab</div>
+          <div class="proj-header">
+            <h2 class="proj-title">Industrial Thermostat PCB Design</h2>
+            <span class="proj-type">Academic Project</span>
+          </div>
+        </div>
+        <p class="proj-body">
+          Tasked with designing a <strong>two-layer industrial thermostat PCB</strong> with an 
+          LCD interface, working under real-world constraints including size, routing density, 
+          and long-term reliability requirements typical of an industrial product. The project 
+          required reverse-engineering an existing reference board before building forward.
+        </p>
+        <div class="proj-divider"></div>
+        <ul class="proj-bullets">
+          <li>Used soldering and board inspection to fully reverse-engineer a reference thermostat PCB, mapping signal flow, power distribution, and component placement before touching any design tools.</li>
+          <li>Created complete schematic and two-layer PCB layout in <strong>KiCad</strong>, with components on both sides — optimizing trace routing, power planes, and signal integrity under strict size constraints.</li>
+          <li>Followed a structured workflow: prototyping → electrical validation → DFM review → final layout sign-off, producing a manufacturable board that met all functional and industrial-grade reliability requirements.</li>
+          <li>Collaborated with a partner throughout, splitting schematic capture and layout work while maintaining design consistency and catching errors through cross-review.</li>
+        </ul>
+        <div class="proj-outcomes">
+          <div class="outcome-cell">
+            <span class="outcome-val">2</span>
+            <span class="outcome-label">Layer PCB</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">LCD</span>
+            <span class="outcome-label">Interface</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">✓</span>
+            <span class="outcome-label">Manufacturable</span>
+          </div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-chip">KiCad</span>
+          <span class="tech-chip">PCB Layout</span>
+          <span class="tech-chip">Soldering</span>
+          <span class="tech-chip">Signal Integrity</span>
+          <span class="tech-chip">DFM</span>
+          <span class="tech-chip">Reverse Engineering</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROJECT 2: ROBOTIC ARM HOUSING ===== -->
+    <div class="project-card-full">
+      <div class="project-visual">
+        <div class="project-num-bg">02</div>
+        <div class="proj-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="8" width="20" height="14" rx="2" stroke="#c8a96e" stroke-width="1.5"/>
+            <path d="M35 22 L25 38 L30 38 L22 58 L38 42 L33 42 L42 22 Z" stroke="#7eb8c9" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+            <rect x="15" y="58" width="50" height="12" rx="2" stroke="#c8a96e" stroke-width="1.5"/>
+            <circle cx="40" cy="15" r="4" stroke="#c8a96e" stroke-width="1" fill="none"/>
+            <line x1="40" y1="22" x2="40" y2="58" stroke="#444" stroke-width="0.75" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <div class="domain-tags">
+          <span class="domain-tag">CAD / Mechanical</span>
+          <span class="domain-tag">AutoCAD</span>
+          <span class="domain-tag">Robotics</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <div>
+          <div class="proj-course">Extracurricular Club Project</div>
+          <div class="proj-header">
+            <h2 class="proj-title">Robotic Arm Housing Design</h2>
+            <span class="proj-type">Club / Extracurricular</span>
+          </div>
+        </div>
+        <p class="proj-body">
+          Participated in an extracurricular engineering club project to develop a robotic arm 
+          requiring a <strong>robust yet flexible housing structure</strong>. Led the mechanical 
+          design of the housing, integrating it with the arm's electrical and mechanical subsystems 
+          under strict size, strength, and flexibility constraints.
+        </p>
+        <div class="proj-divider"></div>
+        <ul class="proj-bullets">
+          <li>Led mechanical design of the entire robotic arm housing in <strong>AutoCAD</strong>, ensuring compatibility with all integrated electrical wiring paths and mechanical joint actuators.</li>
+          <li>Designed under strict constraints — size envelope, minimum material thickness for structural integrity, flexibility at joint interfaces, and manufacturability using available prototyping methods.</li>
+          <li>Collaborated closely with teammates responsible for electrical integration to align component placement, cable management routing, and mounting points — preventing redesign loops late in the build.</li>
+          <li>Researched and applied advanced AutoCAD techniques to improve part manufacturability and performance; delivered a finalized 3D housing model used as the basis for successful physical prototyping.</li>
+        </ul>
+        <div class="proj-outcomes">
+          <div class="outcome-cell">
+            <span class="outcome-val">3D</span>
+            <span class="outcome-label">Full Housing Model</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">✓</span>
+            <span class="outcome-label">Prototyped</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">Lead</span>
+            <span class="outcome-label">Mechanical Design</span>
+          </div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-chip">AutoCAD</span>
+          <span class="tech-chip">3D Modelling</span>
+          <span class="tech-chip">Mechanical Design</span>
+          <span class="tech-chip">Structural Analysis</span>
+          <span class="tech-chip">DFM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROJECT 3: SOFT ROBOTICS ===== -->
+    <div class="project-card-full">
+      <div class="project-visual">
+        <div class="project-num-bg">03</div>
+        <div class="proj-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ring gripper -->
+            <circle cx="40" cy="30" r="18" stroke="#c8a96e" stroke-width="1.5" stroke-dasharray="4 2"/>
+            <circle cx="40" cy="30" r="11" stroke="#7eb8c9" stroke-width="1"/>
+            <!-- Cap (small cylinder) -->
+            <ellipse cx="40" cy="30" rx="8" ry="3" stroke="#888" stroke-width="1" fill="none"/>
+            <!-- Twisting actuator below -->
+            <rect x="33" y="48" width="14" height="20" rx="2" stroke="#c8a96e" stroke-width="1.5"/>
+            <path d="M33 52 Q40 56 47 52" stroke="#7eb8c9" stroke-width="0.75" fill="none"/>
+            <path d="M33 58 Q40 62 47 58" stroke="#7eb8c9" stroke-width="0.75" fill="none"/>
+            <!-- Pressure lines -->
+            <line x1="10" y1="30" x2="22" y2="30" stroke="#444" stroke-width="1" stroke-dasharray="2 2"/>
+            <line x1="10" y1="58" x2="33" y2="58" stroke="#444" stroke-width="1" stroke-dasharray="2 2"/>
+            <circle cx="10" cy="30" r="3" stroke="#c8a96e" stroke-width="1" fill="none"/>
+            <circle cx="10" cy="58" r="3" stroke="#7eb8c9" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="domain-tags">
+          <span class="domain-tag">Soft Robotics</span>
+          <span class="domain-tag">ENGR 482</span>
+          <span class="domain-tag">Hydraulics</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <div>
+          <div class="proj-course">ENGR 482 — Soft Robotics</div>
+          <div class="proj-header">
+            <h2 class="proj-title">Soft Robotic Bottle-Cap Gripper &amp; Twister</h2>
+            <span class="proj-type">Academic Project</span>
+          </div>
+        </div>
+        <p class="proj-body">
+          Designed a <strong>hydraulically actuated soft robotic system</strong> to grip and 
+          twist a 28mm plastic bottle cap using only soft materials — no rigid motors or gears. 
+          The system consists of two independently actuated components: an inflatable ring gripper 
+          and a fibre-reinforced twisting actuator, both fabricated from Ecoflex 00-30 silicone.
+        </p>
+        <div class="proj-divider"></div>
+        <ul class="proj-bullets">
+          <li>Evaluated three design concepts via weighted decision matrix (grip capability, torque generation, soft compliance, modelling feasibility, reliability) — selected Concept 2 (inflatable ring + fibre-reinforced twister) scoring 4.15/5 for its uniform grip and predictable torque.</li>
+          <li>Analytically modelled grip force (F = P × A) estimating <strong>75–150N</strong> at 30–60 kPa, and torque (τ = r·F·μ) exceeding the 0.3–0.6 Nm requirement; modelled twisting angle as θ = k·P showing linear pressure-rotation response.</li>
+          <li>Designed fabrication process: two-part 3D-printed silicone moulds for the ring gripper, nylon thread helically wrapped at 35° fibre angle on cylindrical actuator to constrain radial expansion and induce torsional deformation under pressure.</li>
+          <li>Specified materials (Ecoflex 00-30), assembly, watertight sealing requirements, and an independent dual-pressure routing system allowing grip and twist to be controlled separately to prevent slip before rotation.</li>
+          <li>Developed comprehensive test plan covering grip force (load sensor), torque output (lever arm + force gauge), angular displacement (visual markers), and repeatability over 10–20 cycles.</li>
+        </ul>
+        <div class="proj-outcomes">
+          <div class="outcome-cell">
+            <span class="outcome-val">75N</span>
+            <span class="outcome-label">Min Grip Force</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">0.6Nm</span>
+            <span class="outcome-label">Torque Target Met</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">360°</span>
+            <span class="outcome-label">Angular Range</span>
+          </div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-chip">Soft Robotics</span>
+          <span class="tech-chip">Silicone Casting</span>
+          <span class="tech-chip">Hydraulic Actuation</span>
+          <span class="tech-chip">SolidWorks / CAD</span>
+          <span class="tech-chip">Kinematic Analysis</span>
+          <span class="tech-chip">Ecoflex 00-30</span>
+          <span class="tech-chip">3D Printing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROJECT 4: MEMS CHEVRON ===== -->
+    <div class="project-card-full">
+      <div class="project-visual">
+        <div class="project-num-bg">04</div>
+        <div class="proj-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Stacked chevron actuator schematic -->
+            <!-- Layer 1 -->
+            <path d="M15 60 L28 48 L40 55 L52 48 L65 60" stroke="#c8a96e" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+            <!-- Layer 2 -->
+            <path d="M15 48 L28 36 L40 43 L52 36 L65 48" stroke="#c8a96e" stroke-width="1.5" fill="none" stroke-linejoin="round" opacity="0.7"/>
+            <!-- Layer 3 -->
+            <path d="M15 36 L28 24 L40 31 L52 24 L65 36" stroke="#c8a96e" stroke-width="1.5" fill="none" stroke-linejoin="round" opacity="0.4"/>
+            <!-- Anchor lines -->
+            <line x1="15" y1="60" x2="15" y2="36" stroke="#7eb8c9" stroke-width="1" stroke-dasharray="2 2"/>
+            <line x1="65" y1="60" x2="65" y2="36" stroke="#7eb8c9" stroke-width="1" stroke-dasharray="2 2"/>
+            <!-- Displacement arrow -->
+            <line x1="40" y1="23" x2="40" y2="10" stroke="#6eb87e" stroke-width="1.5"/>
+            <path d="M37 13 L40 8 L43 13" stroke="#6eb87e" stroke-width="1.5" fill="none"/>
+            <text x="44" y="18" fill="#6eb87e" font-family="monospace" font-size="7">δ</text>
+            <!-- Labels -->
+            <text x="5" y="63" fill="#555" font-family="monospace" font-size="6">n=1</text>
+            <text x="5" y="51" fill="#555" font-family="monospace" font-size="6">n=2</text>
+            <text x="5" y="39" fill="#555" font-family="monospace" font-size="6">n=3</text>
+          </svg>
+        </div>
+        <div class="domain-tags">
+          <span class="domain-tag">MEMS</span>
+          <span class="domain-tag">ENGR 406</span>
+          <span class="domain-tag">SU-8 Fabrication</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <div>
+          <div class="proj-course">ENGR 406 — Introduction to MEMS</div>
+          <div class="proj-header">
+            <h2 class="proj-title">Stacked Chevron Actuator — MEMS Displacement Study</h2>
+            <span class="proj-type">Academic / Research</span>
+          </div>
+        </div>
+        <p class="proj-body">
+          Investigated whether <strong>stacking multiple tiers of chevron actuators</strong> in 
+          a MEMS device produces proportionally greater displacement than a single-layer standard 
+          chevron actuator — fabricated using UBC's in-house 1.5-layer SU-8 photolithography 
+          process and physically tested in the lab.
+        </p>
+        <div class="proj-divider"></div>
+        <ul class="proj-bullets">
+          <li>Designed the stacked chevron actuator layout using the in-house 1.5-layer SU-8 process, considering geometric constraints, beam angles, anchor placement, and the thermal expansion mechanism that drives displacement.</li>
+          <li>Performed structural and thermal analysis — calculating expected displacement as a function of stacking number (n), chevron beam angle, and applied current — to predict whether linear or superlinear displacement scaling would occur.</li>
+          <li>Fabricated the device through the photolithography process in a cleanroom environment, then tested the physical chip to measure actual displacement versus theoretical predictions.</li>
+          <li>Compared single-stack vs. multi-stack output displacement, documenting failure modes, fabrication deviations, and the relationship between design parameters and measured performance.</li>
+          <li>Produced a final documentation package including literature search, design layouts, analysis, test plan with labelled test points, results, and lessons learned for future MEMS designers.</li>
+        </ul>
+        <div class="proj-outcomes">
+          <div class="outcome-cell">
+            <span class="outcome-val">SU-8</span>
+            <span class="outcome-label">Fabrication Process</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">1.5L</span>
+            <span class="outcome-label">In-House Process</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">n+</span>
+            <span class="outcome-label">Stacked Tiers</span>
+          </div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-chip">MEMS Design</span>
+          <span class="tech-chip">SU-8 Photolithography</span>
+          <span class="tech-chip">Cleanroom Fabrication</span>
+          <span class="tech-chip">Thermal Actuators</span>
+          <span class="tech-chip">Chevron Mechanisms</span>
+          <span class="tech-chip">Displacement Analysis</span>
+          <span class="tech-chip">MATLAB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROJECT 5: THV REPORT ===== -->
+    <div class="project-card-full">
+      <div class="project-visual">
+        <div class="project-num-bg">05</div>
+        <div class="proj-icon">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Heart valve schematic -->
+            <circle cx="40" cy="40" r="25" stroke="#c8a96e" stroke-width="1.5"/>
+            <circle cx="40" cy="40" r="16" stroke="#7eb8c9" stroke-width="1" stroke-dasharray="3 2"/>
+            <!-- Three leaflets -->
+            <path d="M40 24 Q52 32 52 40 Q52 48 40 52" stroke="#c8a96e" stroke-width="1.5" fill="none"/>
+            <path d="M40 24 Q28 32 28 40 Q28 48 40 52" stroke="#c8a96e" stroke-width="1.5" fill="none"/>
+            <path d="M28 35 Q36 28 40 24 Q44 28 52 35" stroke="#c8a96e" stroke-width="1" fill="none"/>
+            <!-- Flow arrow -->
+            <line x1="40" y1="10" x2="40" y2="24" stroke="#6eb87e" stroke-width="1.5"/>
+            <path d="M37 21 L40 26 L43 21" stroke="#6eb87e" stroke-width="1" fill="none"/>
+            <line x1="40" y1="56" x2="40" y2="70" stroke="#6eb87e" stroke-width="1.5"/>
+            <path d="M37 67 L40 72 L43 67" stroke="#6eb87e" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="domain-tags">
+          <span class="domain-tag">Biomedical</span>
+          <span class="domain-tag">ENGR 482</span>
+          <span class="domain-tag">Research</span>
+        </div>
+      </div>
+      <div class="project-content">
+        <div>
+          <div class="proj-course">ENGR 482 — Engineering Design</div>
+          <div class="proj-header">
+            <h2 class="proj-title">Transcatheter Heart Valve — Engineering Analysis Report</h2>
+            <span class="proj-type">Research Report</span>
+          </div>
+        </div>
+        <p class="proj-body">
+          Authored a <strong>comprehensive engineering report on transcatheter heart valve (THV) 
+          design</strong>, covering the biomechanics of the native aortic valve, engineering 
+          design requirements for TAVR/TMVR systems, device architecture and materials, 
+          deployment mechanics, failure modes, and future directions — integrating fluid dynamics, 
+          materials science, and structural mechanics.
+        </p>
+        <div class="proj-divider"></div>
+        <ul class="proj-bullets">
+          <li>Modelled native aortic valve biomechanics: calculated membrane stress (σ = Pr/t ≈ 400 kPa at 120 mmHg) across 35M cycles/year, quantified pressure gradients using ΔP ≈ 4v² and turbulence thresholds in stenotic conditions (v &gt; 3 m/s).</li>
+          <li>Analysed frame material trade-offs (Nitinol vs. Cobalt-Chromium): shape memory vs. balloon-expandable deployment, radial force magnitude, flexibility, and anatomical conformity — relating material selection to clinical outcomes.</li>
+          <li>Compared TAVR and TMVR engineering challenges — TAVR's tubular-root compatibility vs. TMVR's 3D saddle annulus geometry, LVOT obstruction risk, and static vs. dynamic radial force requirements.</li>
+          <li>Identified root causes of clinical complications: poor personalized fit, low delivery manoeuvrability, and absence of real-time repositioning — proposing patient-specific 3D-printed geometries, bioresorbable frames, and adaptive delivery systems as solutions.</li>
+          <li>Synthesised engineering design principles applicable across all transcatheter valve systems: anatomical compatibility over standardised sizing, hemodynamic mimicry of native valve behaviour, and material fatigue resistance as primary design drivers.</li>
+        </ul>
+        <div class="proj-outcomes">
+          <div class="outcome-cell">
+            <span class="outcome-val">35M</span>
+            <span class="outcome-label">Cycles / Year</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">TAVR</span>
+            <span class="outcome-label">+ TMVR Analysis</span>
+          </div>
+          <div class="outcome-cell">
+            <span class="outcome-val">BME</span>
+            <span class="outcome-label">Multidisciplinary</span>
+          </div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-chip">Biomedical Engineering</span>
+          <span class="tech-chip">Fluid Dynamics</span>
+          <span class="tech-chip">Structural Mechanics</span>
+          <span class="tech-chip">Materials Science</span>
+          <span class="tech-chip">Nitinol / CoCr</span>
+          <span class="tech-chip">TAVR / TMVR</span>
+          <span class="tech-chip">Clinical Engineering</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /projects-main -->
+
+  <!-- CTA -->
+  <div style="margin-top:4rem; padding:3rem; background:var(--surface); border:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem;">
+    <div>
+      <div class="section-tag">Capstone</div>
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">Want to see the full Capstone Project?</h3>
+      <p style="font-size:0.9rem;color:var(--muted);">The LEA 2.0 — a portable milk heating and frothing device for Tenebris Coffee — has its own dedicated page.</p>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="capstone.html" class="btn btn-primary">View Capstone →</a>
+      <a href="contact.html" class="btn btn-ghost">Contact Me</a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Syed Sameed · UBC School of Engineering</p>
+  <p>Vernon, BC · syedsameed16@gmail.com</p>
+</footer>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Visual feedback only for now — extend with data-category attr for full filtering
+    });
+  });
+</script>
+
+</body>
+</html>

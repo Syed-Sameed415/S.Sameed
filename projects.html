@@ -220,17 +220,17 @@
           </div>
         </div>
         <p class="proj-body">
-          Tasked with designing a <strong>two-layer industrial thermostat PCB</strong> with an 
-          LCD interface, working under real-world constraints including size, routing density, 
-          and long-term reliability requirements typical of an industrial product. The project 
-          required reverse-engineering an existing reference board before building forward.
+          Tasked with designing a two layer industrial thermostat PCB with an 
+          LCD interface, working under real world constraints including size, routing density, 
+          and long term reliability requirements. The project 
+          required reverse engineering an existing reference board before building forward.
         </p>
         <div class="proj-divider"></div>
         <ul class="proj-bullets">
-          <li>Used soldering and board inspection to fully reverse-engineer a reference thermostat PCB, mapping signal flow, power distribution, and component placement before touching any design tools.</li>
-          <li>Created complete schematic and two-layer PCB layout in <strong>KiCad</strong>, with components on both sides — optimizing trace routing, power planes, and signal integrity under strict size constraints.</li>
-          <li>Followed a structured workflow: prototyping → electrical validation → DFM review → final layout sign-off, producing a manufacturable board that met all functional and industrial-grade reliability requirements.</li>
-          <li>Collaborated with a partner throughout, splitting schematic capture and layout work while maintaining design consistency and catching errors through cross-review.</li>
+          <li>Used soldering and board inspection to fully reverse engineer a reference thermostat PCB, mapping signal flow, power distribution, and analyzing component placement</li>
+          <li>Created complete schematic layout in <strong>KiCad</strong>, optimizing trace routing, power planes, and signal integrity</li>
+          <li>Followed a structured workflow: prototyping → electrical validation → Review → final layout, producing a manufacturable board that met all functional requirements.</li>
+          <li>Collaborated with a partner throughout, splitting schematic capture and layout work .</li>
         </ul>
         <div class="proj-outcomes">
           <div class="outcome-cell">
@@ -286,16 +286,15 @@
         </div>
         <p class="proj-body">
           Participated in an extracurricular engineering club project to develop a robotic arm 
-          requiring a <strong>robust yet flexible housing structure</strong>. Led the mechanical 
+          requiring a robust housing structure. Led the mechanical 
           design of the housing, integrating it with the arm's electrical and mechanical subsystems 
-          under strict size, strength, and flexibility constraints.
+          under size, strength, and flexibility constraints.
         </p>
         <div class="proj-divider"></div>
         <ul class="proj-bullets">
-          <li>Led mechanical design of the entire robotic arm housing in <strong>AutoCAD</strong>, ensuring compatibility with all integrated electrical wiring paths and mechanical joint actuators.</li>
-          <li>Designed under strict constraints — size envelope, minimum material thickness for structural integrity, flexibility at joint interfaces, and manufacturability using available prototyping methods.</li>
-          <li>Collaborated closely with teammates responsible for electrical integration to align component placement, cable management routing, and mounting points — preventing redesign loops late in the build.</li>
-          <li>Researched and applied advanced AutoCAD techniques to improve part manufacturability and performance; delivered a finalized 3D housing model used as the basis for successful physical prototyping.</li>
+          <li>Led mechanical design of the robotic arm housing in <strong>AutoCAD</strong>, ensuring compatibility with all integrated electrical and mechanical subsystems.</li>
+          <li>Collaborated closely with teammates responsible for electrical integration to align component placement, cable management routing, and mounting points.</li>
+          <li>Researched and applied AutoCAD techniques to improve part manufacturing and performance.</li>
         </ul>
         <div class="proj-outcomes">
           <div class="outcome-cell">
@@ -308,7 +307,7 @@
           </div>
           <div class="outcome-cell">
             <span class="outcome-val">Lead</span>
-            <span class="outcome-label">Mechanical Design</span>
+            <span class="outcome-label">Housing Design</span>
           </div>
         </div>
         <div class="proj-tech">
@@ -365,25 +364,38 @@
         </p>
         <div class="proj-divider"></div>
         <ul class="proj-bullets">
-          <li>Evaluated three design concepts via weighted decision matrix (grip capability, torque generation, soft compliance, modelling feasibility, reliability) — selected Concept 2 (inflatable ring + fibre-reinforced twister) scoring 4.15/5 for its uniform grip and predictable torque.</li>
-          <li>Analytically modelled grip force (F = P × A) estimating <strong>75–150N</strong> at 30–60 kPa, and torque (τ = r·F·μ) exceeding the 0.3–0.6 Nm requirement; modelled twisting angle as θ = k·P showing linear pressure-rotation response.</li>
-          <li>Designed fabrication process: two-part 3D-printed silicone moulds for the ring gripper, nylon thread helically wrapped at 35° fibre angle on cylindrical actuator to constrain radial expansion and induce torsional deformation under pressure.</li>
-          <li>Specified materials (Ecoflex 00-30), assembly, watertight sealing requirements, and an independent dual-pressure routing system allowing grip and twist to be controlled separately to prevent slip before rotation.</li>
-          <li>Developed comprehensive test plan covering grip force (load sensor), torque output (lever arm + force gauge), angular displacement (visual markers), and repeatability over 10–20 cycles.</li>
+          <li>Evaluated three design concepts via weighted decision matrix (grip capability, torque generation, soft compliance, modelling feasibility, reliability) — selected Concept 2 (inflatable ring + fibre-reinforced twister) scoring 4.15/5 for its uniform grip and torque capability.</li>
+          <li>Analytically modelled grip force (F = P × A) estimating 75–150N at 30–60 kPa, and torque (τ = r·F·μ) exceeding the 0.3–0.6 Nm requirement; modelled twisting angle as θ = k·P showing linear pressure rotation.</li>
+          <li>Designed fabrication process: two part 3D-printed silicone moulds for the ring gripper, nylon thread helically wrapped at approxiametly 40-45 degrees fibre angle on cylindrical actuator to constrain radial expansion and induce torsional deformation under pressure.</li>
+          <li>Specified materials (Ecoflex 00-30), assembly, watertight sealing requirements, and an independent dual pressurising system allowing grip and twist to be controlled separately to prevent slip before rotation.</li>
+          <li>Simulation of 3D-model of actuators showed inability of ring gripper to efficiently grip due to lack of surface area and twisting actuator to rotate due to needed pressure exceeding material capabilities.</li>
         </ul>
-        <div class="proj-outcomes">
-          <div class="outcome-cell">
-            <span class="outcome-val">75N</span>
-            <span class="outcome-label">Min Grip Force</span>
-          </div>
-          <div class="outcome-cell">
-            <span class="outcome-val">0.6Nm</span>
-            <span class="outcome-label">Torque Target Met</span>
-          </div>
-          <div class="outcome-cell">
-            <span class="outcome-val">360°</span>
-            <span class="outcome-label">Angular Range</span>
-          </div>
+
+<!-- PDF LINK -->
+    <div style="padding-top: 0.5rem; border-top: 1px solid var(--border);">
+      <a href="ENGR_482_Soft_Robotics.pdf" target="_blank" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        text-decoration: none;
+        transition: opacity 0.15s;
+      " onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="12" y1="18" x2="12" y2="12"/>
+          <line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+        View Full Technical Report (PDF)
+      </a>
+    </div>
+
+        
         </div>
         <div class="proj-tech">
           <span class="tech-chip">Soft Robotics</span>

@@ -160,9 +160,8 @@
   </div>
   <h1>Liquid Espresso<br/><em>Apparatus</em> 2.0</h1>
   <p>
-    A portable milk heating and frothing device designed for Tenebris Coffee — 
-    from nitrogen-based sparging experiments to a working electric-whisk prototype 
-    with 77.9% thermal efficiency and 75mL of stable foam.
+    A portable milk heating and frothing device designed for Tenebris Coffee, 
+    from nitrogen-based sparging experiments to a working electric whisk prototype.
   </p>
   <div class="project-meta">
     <div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">ENGR 499 — Capstone Design</span></div>
@@ -190,18 +189,18 @@
   <div class="two-col-wide">
     <div>
       <p class="body-text">
-        Tenebris Coffee — a Kelowna craft coffee company — wanted to bring a café experience 
-        to travellers. Their vision: a <strong>portable device</strong> that heats and froths 
+        Tenebris Coffee, a Kelowna craft coffee company, wanted to bring a café experience 
+        to travellers. Their vision: a portable device that heats and froths 
         milk, designed to pair with their canned nitrogen espresso charges. The device 
         needed to eliminate the need for external cups or disposable cartridges, and had to 
         be compact enough to fit in a backpack.
       </p>
       <p class="body-text">
-        Our team of five took this from a sketch on paper through material research, 
-        nitrogen sparging experiments, multiple frother prototypes, and finally to a 
-        working proof-of-concept — a <strong>320W resistive heater</strong> paired with a 
-        <strong>5V DC whisk motor</strong>, controlled by an Arduino, housed in a 
-        custom 3D-printed PLA enclosure around a stainless steel milk cup.
+        Our team of five took this from a theory and through material research, 
+        nitrogen sparging experiments, and multiple frother prototypes, we were able to 
+        build a working proof-of-concept. (A 320W resistive heater paired with a 
+        5V DC whisk motor, controlled by an Arduino, housed in a 
+        custom 3D-printed PLA enclosure around a stainless steel milk cup.)
       </p>
       <div class="callout">
         <strong>Key Achievement:</strong> The final prototype heated 250mL of milk in under 
@@ -250,17 +249,16 @@
     <div>
       <p class="body-text">
         Existing portable milk frothers either sacrifice consistency for size, or require 
-        professional-grade steam equipment. Tenebris needed a solution matching their brand 
-        values: <strong>portable, sustainable, and café-quality</strong>.
+        professional grade steam equipment. Tenebris needed a solution matching their brand quality.
       </p>
       <p class="body-text">
-        The initial scope required using <strong>nitrogen gas</strong> from their pressurized 
-        espresso cans to froth the milk — an exciting but physically constrained requirement 
+        The initial scope required using nitrogen gas from their pressurized 
+        espresso cans to froth the milk, an exciting but also a demanding requirement 
         that ultimately drove our entire iterative design process.
       </p>
       <div class="callout">
         <strong>Primary Objectives:</strong> Heat 250mL of milk to 60°C in under 5 minutes · 
-        Produce café-quality microfoam · Fit within a 13×30cm thermos form factor · 
+        Produce café-quality microfoam · Fit approximately within a standard thermos form factor · 
         Food-safe and portable.
       </div>
     </div>
@@ -283,7 +281,7 @@
   <h2 class="section-title">The Design Journey — Five Meetings, Five Pivots</h2>
   <p class="body-text" style="max-width:700px;">
     Our process did not follow a linear path. Each client meeting brought new insights, 
-    test data, and sometimes a complete direction change. This iterative reality shaped our final solution.
+    test data, and sometimes a complete direction change. This iterative process shaped our final solution.
   </p>
   <div class="iteration-flow" style="margin:3rem 0;">
     <div class="iter-card">
@@ -352,20 +350,15 @@
     <div>
       <p class="body-text">
         The final prototype is a cylindrical device (12×28cm) with four main subsystems: a 
-        <strong>stainless steel milk container</strong>, a <strong>PLA 3D-printed outer housing 
-        and lid</strong>, a <strong>resistive heating element</strong>, and a 
-        <strong>DC frother motor with Arduino controller</strong>.
+        stainless steel milk container, a PLA 3D-printed outer housing 
+        and lid, a resistive heating element, and a 
+        DC frother motor with Arduino controller.
       </p>
       <p class="body-text">
         A critical design insight came from earlier iterations where internal heater placement 
-        caused milk to burn on the element. The final design <strong>places the heater on the 
-        exterior bottom surface</strong> of the stainless cup, eliminating direct milk contact 
+        caused milk to burn onto the element. The final design places the heater on the 
+        exterior bottom surface of the stainless cup, eliminating direct milk contact 
         while maintaining efficient heat transfer.
-      </p>
-      <p class="body-text">
-        The control scheme is deliberately <strong>feedforward-only</strong> with no sensors — 
-        heating time and froth duration set from empirical testing. This eliminates sensor 
-        failure modes and keeps the UI to two buttons.
       </p>
       <div class="callout">
         <strong>Design Insight:</strong> Moving the heater to the cup exterior — discovered 
@@ -428,8 +421,8 @@
   <h2 class="section-title">Test Results</h2>
   <p class="body-text" style="max-width:650px;">
     The prototype was tested against all six evaluation criteria and five design requirements. 
-    Core engineering targets were met or exceeded; product-readiness gaps (battery, food-safe 
-    materials) remain for a future iteration.
+    Core engineering targets were met or exceeded. Other aspects of the project that require it be consumer ready
+    (battery, food-safe materials) remain for a future iterations and are outlined in future directions.
   </p>
   <div class="results-grid">
     <div class="result-card pass"><span class="result-label">Heating Power</span><span class="result-value">320.6W</span><span class="result-target">Target: 333W · Passed</span></div>
@@ -441,11 +434,6 @@
     <div class="result-card pass"><span class="result-label">Operating Time</span><span class="result-value">4m 20s</span><span class="result-target">Target: &lt;5 min · Passed</span></div>
     <div class="result-card fail"><span class="result-label">Battery Life</span><span class="result-value">N/A</span><span class="result-target">Requires AC outlet · Failed</span></div>
   </div>
-  <div class="callout" style="margin-top:1.5rem;">
-    <strong>Summary:</strong> Device met all engineering performance criteria. Remaining gaps — 
-    AC-only power and PLA housing (non-food-safe) — are prototype budget limitations, not 
-    fundamental design flaws. Both are addressed in the next-iteration roadmap.
-  </div>
 </section>
 
 <!-- LESSONS -->
@@ -455,21 +443,18 @@
   <div class="two-col">
     <div>
       <p class="body-text">
-        This project taught me that <strong>client requirements are living documents</strong>. 
-        Our scope shifted three times — from nitrogen sparging prototype, to research-only mode, 
-        back to a functioning device. Navigating these pivots without losing engineering rigour 
-        was the real challenge.
+        This project taught me that client requirements can change and as a design team 
+        working for the client, we need to be able to adapt and change.
+        Our scope shifted three times -> from nitrogen sparging prototype, to research only mode, 
+        back to a functioning device. Navigating these pivots without bactracking or greatly extending
+        project timeline was a challenge that we had to overcome as a deisgn team.
       </p>
       <p class="body-text">
-        We also learned that <strong>foam science resists calculation</strong>. Unlike heating, 
+        We also learned that foam science resists calculation. Unlike heating, 
         which we could model precisely, foam formation depended on milk protein concentration, 
-        fat content, temperature, and bubble dynamics in ways only empirical testing could 
-        resolve. The nitrogen frothing hypothesis was mathematically sound but physically 
+        fat content, temperature, and bubble dynamics in ways only experimental testing could 
+        model accurately. The nitrogen frothing hypothesis was mathematically sound but physically 
         constrained by available can pressure.
-      </p>
-      <p class="body-text">
-        Each burnt-milk test run informed a better heater placement decision. <strong>Failure 
-        is a data point, not a setback.</strong>
       </p>
     </div>
     <div style="display:flex;flex-direction:column;gap:1rem;">

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Syed Sameed</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Syed Sameed</a>
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="capstone.html">Capstone</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-eyebrow">Portfolio</div>
+      <h1>Technical&ensp;<em>Projects</em></h1>
+      <p class="page-hero-sub">
+        A collection of engineering projects spanning hardware design, soft robotics,
+        MEMS fabrication, biomedical systems, and PLC automation. Each project reflects
+        a different facet of my engineering background.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Projects ── -->
+  <div class="section">
+
+    <div class="filter-bar">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Hardware</button>
+      <button class="filter-btn">Robotics</button>
+      <button class="filter-btn">MEMS</button>
+      <button class="filter-btn">Biomedical</button>
+      <button class="filter-btn">Research</button>
+    </div>
+
+    <div class="projects-list">
+
+      <!-- Project 01 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">01</span>
+          <div class="project-meta">
+            <div class="project-course">ENGR Hardware Lab<span class="project-type-badge">Academic</span></div>
+          </div>
+          <div class="project-tags-inline">
+            <span class="tag">KiCad</span>
+            <span class="tag">PCB Layout</span>
+            <span class="tag">Soldering</span>
+            <span class="tag">Signal Integrity</span>
+            <span class="tag">DFM</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h2>Industrial Thermostat PCB Design</h2>
+          <p>
+            Tasked with designing a two-layer industrial thermostat PCB with an LCD interface,
+            working under real-world constraints including size, routing density, and long-term
+            reliability requirements. The project required reverse engineering an existing
+            reference board before building forward.
+          </p>
+          <div class="project-badges">
+            <span class="badge badge-neutral">2 Layer PCB</span>
+            <span class="badge badge-neutral">LCD Interface</span>
+            <span class="badge badge-success">✓ Manufacturable</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Used soldering and board inspection to fully reverse engineer a reference thermostat PCB, mapping signal flow, power distribution, and component placement.</li>
+            <li>Created complete schematic layout in <strong>KiCad</strong>, optimising trace routing, power planes, and signal integrity.</li>
+            <li>Followed a structured workflow: prototyping → electrical validation → review → final layout, producing a manufacturable board that met all functional requirements.</li>
+            <li>Collaborated with a partner throughout, splitting schematic capture and layout work.</li>
+          </ul>
+          <div class="project-images">
+            <img src="pcb1.jpg" alt="PCB Image 1">
+            <img src="pcb2.jpg" alt="PCB Image 2">
+            <img src="pcb3.jpg" alt="PCB Image 3">
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 02 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">02</span>
+          <div class="project-meta">
+            <div class="project-course">Extracurricular Club Project<span class="project-type-badge">Club</span></div>
+          </div>
+          <div class="project-tags-inline">
+            <span class="tag">AutoCAD</span>
+            <span class="tag">3D Modelling</span>
+            <span class="tag">Mechanical Design</span>
+            <span class="tag">DFM</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h2>Robotic Arm Housing Design</h2>
+          <p>
+            Participated in an extracurricular engineering club project to develop a robotic arm
+            requiring a robust housing structure. Led the mechanical design of the housing,
+            integrating it with the arm's electrical and mechanical subsystems under size,
+            strength, and flexibility constraints.
+          </p>
+          <div class="project-badges">
+            <span class="badge badge-neutral">3D Full Housing Model</span>
+            <span class="badge badge-success">✓ Prototyped</span>
+            <span class="badge badge-neutral">Lead Housing Design</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Led mechanical design of the robotic arm housing in <strong>AutoCAD</strong>, ensuring compatibility with all integrated electrical and mechanical subsystems.</li>
+            <li>Collaborated closely with teammates responsible for electrical integration to align component placement, cable management routing, and mounting points.</li>
+            <li>Researched and applied AutoCAD techniques to improve part manufacturing and performance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 03 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">03</span>
+          <div class="project-meta">
+            <div class="project-course">ENGR 482 — Soft Robotics<span class="project-type-badge">Academic</span></div>
+          </div>
+          <div class="project-tags-inline">
+            <span class="tag">Silicone Fabrication</span>
+            <span class="tag">Soft Robotics</span>
+            <span class="tag">Hydraulic Actuation</span>
+            <span class="tag">Ecoflex 00-30</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h2>Soft Robotic Bottle-Cap Gripper &amp; Twister</h2>
+          <p>
+            Designed a <strong>hydraulically actuated soft robotic system</strong> to grip and twist a 28mm
+            plastic bottle cap using only soft materials — no rigid motors or gears. The system consists
+            of two independently actuated components: an inflatable ring gripper and a fibre-reinforced
+            twisting actuator, both fabricated from Ecoflex 00-30 silicone.
+          </p>
+          <ul class="project-highlights">
+            <li>Evaluated three design concepts via weighted decision matrix (grip capability, torque generation, soft compliance, modelling feasibility, reliability) — selected Concept 2 scoring 4.15/5.</li>
+            <li>Analytically modelled grip force (F = P × A) estimating 75–150 N at 30–60 kPa, and torque (τ = r·F·μ) exceeding the 0.3–0.6 Nm requirement; modelled twisting angle as θ = k·P showing linear pressure–rotation.</li>
+            <li>Designed fabrication process: two-part 3D-printed silicone moulds for the ring gripper; nylon thread helically wrapped at ~40–45° fibre angle on cylindrical actuator to constrain radial expansion and induce torsional deformation under pressure.</li>
+            <li>Specified materials (Ecoflex 00-30), assembly, watertight sealing requirements, and an independent dual pressurising system allowing grip and twist to be controlled separately.</li>
+            <li>3D simulation showed inability of ring gripper to efficiently grip due to insufficient surface area; twisting actuator rotation limited by available pressure — documented failure analysis.</li>
+          </ul>
+          <div class="mt-2">
+            <a href="Soft Robotics Project.pdf" class="btn btn-outline" style="font-size:0.85rem">View Full Technical Report (PDF)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 04 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">04</span>
+          <div class="project-meta">
+            <div class="project-course">ENGR 406 — Introduction to MEMS<span class="project-type-badge">Academic / Research</span></div>
+          </div>
+          <div class="project-tags-inline">
+            <span class="tag">MEMS</span>
+            <span class="tag">SU-8 Photolithography</span>
+            <span class="tag">Thermal Actuation</span>
+            <span class="tag">Structural Analysis</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h2>Stacked Chevron Actuator — MEMS Displacement Study</h2>
+          <p>
+            Investigated whether stacking multiple tiers of chevron actuators in a MEMS device produces
+            proportionally greater displacement than a single-layer standard chevron actuator fabricated
+            using UBC's in-house 1.5-layer SU-8 photolithography process and physically tested in the lab.
+          </p>
+          <ul class="project-highlights">
+            <li>Designed the stacked chevron actuator layout using the in-house 1.5-layer SU-8 process, considering beam angles, anchor placement, and the thermal expansion mechanism driving displacement.</li>
+            <li>Performed structural and thermal analysis calculating expected displacement as a function of stacking number (n) and applied current.</li>
+            <li>Compared single-stack vs. multi-stack output displacement, documenting failure modes, fabrication deviations, and the relationship between design parameters and measured performance.</li>
+            <li>Produced a final documentation package including design analysis and test plan with labelled results and lessons learned.</li>
+          </ul>
+          <div class="project-images">
+            <img src="mems1.jpg" alt="MEMS Device Image 1">
+            <img src="mems2.jpg" alt="MEMS Device Image 2">
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 05 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <span class="project-num">05</span>
+          <div class="project-meta">
+            <div class="project-course">ENGR 482 — Engineering Design<span class="project-type-badge">Research Report</span></div>
+          </div>
+          <div class="project-tags-inline">
+            <span class="tag">Biomedical</span>
+            <span class="tag">TAVR / TMVR</span>
+            <span class="tag">Nitinol</span>
+            <span class="tag">Hemodynamics</span>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <h2>Transcatheter Heart Valve — Engineering Analysis Report</h2>
+          <p>
+            Authored a comprehensive engineering report on transcatheter heart valve (THV) design,
+            covering the biomechanics of the native aortic valve, engineering design requirements for
+            TAVR/TMVR systems, device architecture and materials, deployment mechanics, failure modes,
+            and future directions.
+          </p>
+          <div class="project-badges">
+            <span class="badge badge-neutral">35M Cycles / Year</span>
+            <span class="badge badge-neutral">TAVR + TMVR Analysis</span>
+            <span class="badge badge-neutral">BME Multidisciplinary</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Modelled native aortic valve biomechanics: calculated membrane stress (σ = Pr/t ≈ 400 kPa at 120 mmHg) across 35M cycles/year; quantified pressure gradients using ΔP ≈ 4v² and turbulence thresholds in diseased conditions such as aortic stenosis.</li>
+            <li>Analysed frame material trade-offs (Nitinol vs. Cobalt-Chromium): shape memory vs. balloon-expandable deployment, radial force magnitude, flexibility, and anatomical conformity → relating material selection to clinical outcomes.</li>
+            <li>Compared TAVR and TMVR engineering challenges — TAVR's tubular root compatibility vs. TMVR's 3D saddle annulus geometry and LVOT obstruction risk.</li>
+            <li>Identified root causes of clinical complications; proposed patient-specific 3D-printed geometries, bioresorbable frames, and adaptive delivery systems as solutions.</li>
+          </ul>
+          <div class="mt-2">
+            <a href="ENGR_482_THV.pdf" class="btn btn-outline" style="font-size:0.85rem">View Full Technical Report (PDF)</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects-list -->
+
+    <div class="cta-banner">
+      <div>
+        <h3>Want to see the full Capstone Project?</h3>
+        <p>The LEA 2.0 — a portable milk heating and frothing device for Tenebris Coffee — has its own dedicated page.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="capstone.html" class="btn btn-outline">View Capstone →</a>
+        <a href="contact.html" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Syed Sameed · UBC School of Engineering</span>
+      <span>Vernon, BC · <a href="mailto:syedsameed16@gmail.com">syedsameed16@gmail.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
